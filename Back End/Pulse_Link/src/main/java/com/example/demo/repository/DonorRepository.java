@@ -1,0 +1,31 @@
+
+package com.example.demo.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.Donor;
+
+public interface DonorRepository
+        extends JpaRepository<Donor, Long> {
+
+    List<Donor> findByActiveTrue();
+
+    List<Donor> findByBloodGroupAndCityIgnoreCaseAndActiveTrue(
+            String bloodGroup, String city);
+
+    List<Donor> findByBloodGroupIgnoreCaseAndActiveTrue(
+            String bloodGroup);
+
+List<Donor> findByBloodGroupIgnoreCaseAndCityIgnoreCaseAndActiveTrueAndAvailableTrue(
+        String bloodGroup, String city);
+
+List<Donor> findByBloodGroupIgnoreCaseAndActiveTrueAndAvailableTrue(
+        String bloodGroup);
+
+boolean existsByPhone (String phone);
+Optional <Donor> findByUser_Id(Long userId);
+
+}
